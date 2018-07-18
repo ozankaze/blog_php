@@ -1,0 +1,29 @@
+*{
+  margin : 0px;
+  padding: 0px;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 40pc auto;
+  width: 80%;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+.each_article {
+  background-color: lightblue;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+}
+
+.waktu, .tag {
+  font-size: 11px;
+}
+
+#footer {
+  margin-bottom: 30px;
+}
