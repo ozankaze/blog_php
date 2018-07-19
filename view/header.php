@@ -9,3 +9,7 @@
     <head>
       <h1>Blof fauzan belajar</h1>
     </head>
+    <div id="menu">
+      <a href="index.php">Home</a>
+      <a href="create.php">Create</a>
+    </div>
