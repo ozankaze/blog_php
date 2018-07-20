@@ -1,4 +1,5 @@
 <?php
+// nampilkan data index
 function tampilkan() {
   global $link;
 
@@ -7,6 +8,7 @@ function tampilkan() {
   return $result;
 }
 
+// mengambil id
 function tampilkan_per_id($id) {
   global $link;
   $query = "SELECT * FROM `blog` WHERE id='$id'";
@@ -15,6 +17,7 @@ function tampilkan_per_id($id) {
   return $result;
 }
 
+// create data
 function tambah_data($judul, $isi, $tag) {
   $query = "INSERT INTO `blog` (`judul`, `isi`, `tag`) VALUES ('$judul', 'isi', '$tag')";
   // print_r($query);
@@ -23,6 +26,7 @@ function tambah_data($judul, $isi, $tag) {
 
 }
 
+// update data
 function edit_data($judul, $isi, $tag, $id) {
   global $link;
   $query = "UPDATE `blog` SET judul='$judul', isi='$isi', tag='$tag' WHERE id=$id";
@@ -31,6 +35,7 @@ function edit_data($judul, $isi, $tag, $id) {
   return run($query);
 }
 
+// menjalankan query
 function run($query) {
   global $link;
 
@@ -39,6 +44,12 @@ function run($query) {
   } else {
     return false;
   }
+}
+
+// untuk memotong string
+function excerpt($string) {
+  $string = substr($string, 0, 10);
+  return $string . " . . . . ";
 }
 
 

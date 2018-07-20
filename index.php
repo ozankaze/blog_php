@@ -9,8 +9,8 @@ $article = tampilkan();
 
 <?php while( $row = mysqli_fetch_assoc($article) ) : ?>
   <div class="each_article">
-    <h3><?php echo $row['judul'] ?></h3>
-    <p><?php echo $row['isi'] ?></p>
+    <h3><a href="singel.php?id=<?php echo $row['id'] ?>"><?php echo $row['judul'] ?></a></h3>
+    <p><?php echo excerpt($row['isi'])?></p>
     <p class="waktu"><?php echo $row['waktu'] ?></p>
     <p class="tag"><?php echo $row['tag'] ?></p>
     <a href="update.php?id=<?php echo $row['id'] ?>">Edit</a>
