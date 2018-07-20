@@ -13,6 +13,7 @@ $article = tampilkan();
     <p><?php echo $row['isi'] ?></p>
     <p class="waktu"><?php echo $row['waktu'] ?></p>
     <p class="tag"><?php echo $row['tag'] ?></p>
+    <a href="update.php?id=<?php echo $row['id'] ?>">Edit</a>
   </div>
 <?php endwhile ?>
 
