@@ -2,12 +2,21 @@
 require_once "core/init.php";
 require_once "view/header.php";
 
-$article = tampilkan();
+$articles = tampilkan();
 
 // die(print_r($article));
+
+if( isset($_GET['search']) ) {
+  $cari = $_GET['search'];
+  $articles = cari_data($cari);
+}
 ?>
 
-<?php while( $row = mysqli_fetch_assoc($article) ) : ?>
+<form action="" method="get">
+  <input type="search" name="search" value="">
+</form>
+
+<?php while( $row = mysqli_fetch_assoc($articles) ) : ?>
   <div class="each_article">
     <h3><a href="singel.php?id=<?php echo $row['id'] ?>"><?php echo $row['judul'] ?></a></h3>
     <p><?php echo excerpt($row['isi'])?></p>
