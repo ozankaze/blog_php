@@ -35,6 +35,14 @@ function edit_data($judul, $isi, $tag, $id) {
   return run($query);
 }
 
+// menghapus data
+function hapus_data($id) {
+  $query = "DELETE FROM blog WHERE id='$id'";
+  $a = mysqli_query($link, $query);
+  // vardump($a);
+  return run($query);
+}
+
 // menjalankan query
 function run($query) {
   global $link;
