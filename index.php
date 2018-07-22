@@ -6,6 +6,10 @@ $articles = tampilkan();
 
 // die(print_r($article));
 
+if ( !$_SESSION['user']) {
+  header("Location: login.php");
+}
+
 if( isset($_GET['search']) ) {
   $cari = $_GET['search'];
   $articles = cari_data($cari);

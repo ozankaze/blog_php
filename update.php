@@ -5,6 +5,10 @@ require_once "view/header.php";
 $error = '';
 $id = $_GET['id'];
 
+if ( !$_SESSION['user']) {
+  header("Location: login.php");
+}
+
 if( isset($_GET['id']) ) {
   $article = tampilkan_per_id($id);
   while( $row = mysqli_fetch_assoc($article) ) {
