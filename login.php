@@ -4,20 +4,30 @@ require_once "view/header.php";
 
 $error = '';
 
-if( isset($_POST['submit']) ) {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+if ( isset($_SESSION['user']) ) {
+  header("Location: index.php");
+} else {
+  if( isset($_POST['submit']) ) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+  
+    if( !empty(trim($username)) AND !empty(trim($password)) ) {
+      
+      if( cek_data($username, $password) ) {
+        $_SESSION['user'] = $username;
+        
+        header("Location: index.php");
+      } else {
+        $error = 'judul dan konten wajib di isi';
+      }
 
-  if( !empty(trim($username)) AND !empty(trim($password)) ) {
-    if( cek_data($username, $password) ) {
-      header("Location: index.php");
     } else {
-      $error = 'judul dan konten wajib di isi';
+      $error = 'user dan password harus di isi';
     }
-  } else {
-    $error = 'user dan password harus di isi';
   }
 }
+
+
 
 ?>
 
