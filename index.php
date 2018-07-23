@@ -6,9 +6,13 @@ if ( !$_SESSION['user']) {
   header("Location: login.php");
 }
 
-$login = false;
+$super_user = $login = false;
+
 if ( isset($_SESSION['user'])) {
-  $login = true; 
+  $login = true;
+  if( cek_status($_SESSION['user']) == 1 ) {
+    $super_user = true;
+  } 
 }
 
 $articles = tampilkan();
@@ -35,8 +39,10 @@ if( isset($_GET['search']) ) {
     
     <?php if( $login == true ) : ?>
       <a href="update.php?id=<?php echo $row['id'] ?>">Edit</a>
-      <a href="delete.php?id=<?php echo $row['id'] ?>">Delete</a>
-<?php endif; ?>
+        <?php if( $super_user == true ) : ?>
+          <a href="delete.php?id=<?php echo $row['id'] ?>">Delete</a>
+        <?php endif; ?>
+    <?php endif; ?>
   </div>
 <?php endwhile ?>
 
