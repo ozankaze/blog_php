@@ -2,6 +2,10 @@
 require_once "core/init.php";
 require_once "view/header.php";
 
+if ( !$_SESSION['user']) {
+  header("Location: login.php");
+}
+
 $error = '';
 $id = $_GET['id'];
 

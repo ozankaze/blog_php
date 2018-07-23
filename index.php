@@ -2,13 +2,19 @@
 require_once "core/init.php";
 require_once "view/header.php";
 
+if ( !$_SESSION['user']) {
+  header("Location: login.php");
+}
+
+$login = false;
+if ( isset($_SESSION['user'])) {
+  $login = true; 
+}
+
 $articles = tampilkan();
 
 // die(print_r($article));
 
-if ( !$_SESSION['user']) {
-  header("Location: login.php");
-}
 
 if( isset($_GET['search']) ) {
   $cari = $_GET['search'];
@@ -26,8 +32,11 @@ if( isset($_GET['search']) ) {
     <p><?php echo excerpt($row['isi'])?></p>
     <p class="waktu"><?php echo $row['waktu'] ?></p>
     <p class="tag"><?php echo $row['tag'] ?></p>
-    <a href="update.php?id=<?php echo $row['id'] ?>">Edit</a>
-    <a href="delete.php?id=<?php echo $row['id'] ?>">Delete</a>
+    
+    <?php if( $login == true ) : ?>
+      <a href="update.php?id=<?php echo $row['id'] ?>">Edit</a>
+      <a href="delete.php?id=<?php echo $row['id'] ?>">Delete</a>
+<?php endif; ?>
   </div>
 <?php endwhile ?>
 

@@ -1,3 +1,13 @@
+<?php
+
+$login = false;
+
+if ( isset($_SESSION['user'])) {
+  $login = true; 
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -12,5 +22,9 @@
     <div id="menu">
       <a href="index.php">Home</a>
       <a href="create.php">Create</a>
-      <a href="logout.php">Logout</a>
+      <?php if( $login == true ) : ?>
+        <a href="logout.php">Logout</a>
+      <?php else: ?>
+        <a href="login.php">Login</a>
+      <?php endif ?>
     </div>
