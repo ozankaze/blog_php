@@ -13,13 +13,23 @@ if ( isset($_SESSION['user']) ) {
   
     if( !empty(trim($username)) AND !empty(trim($password)) ) {
       
-      if( cek_data($username, $password) ) {
-        $_SESSION['user'] = $username;
-        
-        header("Location: index.php");
+      // cek nama kalau sudah ada
+      if( register_ceknama($username) ) {
+
+        // register
+        if( register($username, $password) ) {
+          $_SESSION['user'] = $username;
+          
+          header("Location: index.php");
+        } else {
+          $error = 'Ada Masalah Saat Daftar';
+        }
+
       } else {
-        $error = 'Error Ada Yang Salah';
+        echo ' nama sudah ada';
       }
+
+      
 
     } else {
       $error = 'user dan password harus di isi';
@@ -30,6 +40,7 @@ if ( isset($_SESSION['user']) ) {
 
 
 ?>
+<h2>Daftar user</h2>
 
 <form action="" method="post">
   <label for="username">Username :</label><br>

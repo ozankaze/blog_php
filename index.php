@@ -2,9 +2,9 @@
 require_once "core/init.php";
 require_once "view/header.php";
 
-if ( !$_SESSION['user']) {
-  header("Location: login.php");
-}
+// if ( !$_SESSION['user']) {
+//   header("Location: login.php");
+// }
 
 $super_user = $login = false;
 

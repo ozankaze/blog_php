@@ -22,6 +22,7 @@ if ( isset($_SESSION['user'])) {
     <div id="menu">
       <a href="index.php">Home</a>
       <a href="create.php">Create</a>
+      <a href="register.php">Register</a>
       <?php if( $login == true ) : ?>
         <a href="logout.php">Logout</a>
       <?php else: ?>
