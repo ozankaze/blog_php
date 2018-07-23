@@ -12,4 +12,5 @@
     <div id="menu">
       <a href="index.php">Home</a>
       <a href="create.php">Create</a>
+      <a href="logout.php">Logout</a>
     </div>
